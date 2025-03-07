@@ -8,7 +8,8 @@ const Crypt = require("crypto")
 // Generate a random secret key
 const secretKey = Crypt.randomBytes(32).toString('hex');
 
-module.exports={ secretKey}
+module.exports={secretKey}
+
 
 // but "bycrip" is easier at use but crypto more secured 
 // Turning passwords into fingerprints (hashes).

@@ -8,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const signupRoute= require("./routes/signupR");
 const loginRoute = require("./routes/loginR");
+const userRoute = require("./routes/userR");
 const bodyParser = require("body-parser");
 const createAdminacc = require("./script/admin")
 
@@ -21,7 +22,7 @@ createAdminacc();
 
 app.use("/user", signupRoute);
 app.use("/auth",loginRoute);
-
+app.use("/api",userRoute);
 // Routes
 app.get("/", (req: Request, res: Response) => {
   res.json({ message: "Hello, TypeScript with Express!" });

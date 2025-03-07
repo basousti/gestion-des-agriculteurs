@@ -1,7 +1,7 @@
 //creating login service 
-const bcrypt = require("bcrypt")
+const bcrypte = require("bcrypt")
 const Users = require("../models/users")
-import generateToken from "../utils/JWTutils";
+import { generateToken } from "../utils/JWTutils";
 
 
 async function loginS(name:string,password:string) {
@@ -10,12 +10,13 @@ async function loginS(name:string,password:string) {
         if(!existingUser){
             throw new Error ("User not found")
         }
-        const isPWvalid = bcrypt.compare(password,existingUser.password)
+
+        const isPWvalid = bcrypte.compare(password,existingUser.password)
         if(!isPWvalid){
             throw new Error("wrong password")
         }
         const token = generateToken(existingUser);
-        console.log("Generated Token:", token);  // ✅ Add this
+        console.log("Generated Token:", token);  
         return token;
 
     } catch (error:any) {
@@ -23,5 +24,4 @@ async function loginS(name:string,password:string) {
     }
 
 } 
-
 module.exports={loginS}

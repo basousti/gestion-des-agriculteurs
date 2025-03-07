@@ -33,8 +33,15 @@ const Login: React.FC<Props> = ({ onRegisterClick }) => {
             body: JSON.stringify(formatData)
         })
         const result = await response.json();
-        console.log(result);
-        navigate("/DashboardA")
+        console.log("login response token ",result);
+
+        if (response.ok) { // ✅ Only save if login is successful
+            localStorage.setItem("token", result.token); // ✅ Save token
+            navigate("/DashboardA"); // ✅ Navigate after saving token
+        } else {
+            console.log("login failed ", result.message);
+            
+        }
         
     } catch (error:any) {
         console.log(error.message);

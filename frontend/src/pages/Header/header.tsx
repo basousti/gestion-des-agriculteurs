@@ -4,21 +4,21 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Header=()=> {
+  //localStorage is a place inside your web browser where your website can save small pieces of data and never forget
   const token = localStorage.getItem("token");
   const navigate= useNavigate()
 
   const handleLogout = () =>{
     localStorage.removeItem("token");
     navigate("/login");
+    
   }
 
   return (
     <>
-      <div>Token ${token}</div>
-      <Navbar bg={token ? "primary":"dark"} variant="dark">
+      <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand as={Link} to="/">
-          {token ? "Logged-In" : "Not-LoggedIn"}
           <img
               alt=""
               src="/img/logo.svg"
@@ -31,7 +31,7 @@ const Header=()=> {
           <Nav className="justify-content-end">
             {token ? (
               <>
-              <Nav.Link as={Link} to="/DashboardA" className='nav-link'>Dashboard</Nav.Link>
+              <Nav.Link as={Link} to="/DashboardA" className='nav-link '>Dashboard</Nav.Link>
               <Nav.Link className='nav-link' onClick={handleLogout}>Logout</Nav.Link>
               
               </>
