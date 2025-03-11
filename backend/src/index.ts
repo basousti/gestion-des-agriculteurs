@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const signupRoute= require("./routes/signupR");
 const loginRoute = require("./routes/loginR");
-const userRoute = require("./routes/userR");
+const userRoute = require("./routes/UserR");
 const bodyParser = require("body-parser");
 const createAdminacc = require("./script/admin")
 
@@ -32,3 +32,4 @@ app.get("/", (req: Request, res: Response) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+

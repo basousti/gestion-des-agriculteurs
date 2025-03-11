@@ -1,4 +1,5 @@
 const mongoose = require ("../configuration/dbconfig")
+//const userSchema = new mongoose.Schema({}, { strict: false });
 
 const userSchema = new mongoose.Schema({
     name: String,

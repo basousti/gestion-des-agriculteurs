@@ -4,9 +4,9 @@ const Users = require("../models/users")
 import { generateToken } from "../utils/JWTutils";
 
 
-async function loginS(name:string,password:string) {
+async function loginS(email:string,password:string) {
     try {
-        const existingUser = await Users.findOne({ name  })
+        const existingUser = await Users.findOne({ email  })
         if(!existingUser){
             throw new Error ("User not found")
         }

@@ -1,10 +1,9 @@
 //get users API
 //this file read users fro db
-const user = require("../models/users")
+const user = require("../models/users");
 
 async function getUsers() {
-    const users = await user.find({})
-    return users
+    return await user.find({});  // ✅ The function correctly returns a Promise
 }
 
-module.exports= {getUsers}
+module.exports = { getUsers };

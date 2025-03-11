@@ -1,10 +1,10 @@
-//this file check the headers it should contain the secretkey and if there is a token and does it start with the word Bearer 
-//if everything is good the user can see the page , This helps protect our website 
+//this file check the headers it should contain the secretkey and if there is a token and does it 
+// start with the word Bearer if everything is good the user can see the page , This helps protect our website 
 
 import { Request, Response, NextFunction } from "express";
 
 const jwt = require("jsonwebtoken")
-const secretKey = require("../configuration/jwtConfig")
+const { secretKey } = require("../configuration/jwtConfig"); // ✅ Fix: Extract it as a string
 
 /*The problem here is that TypeScript doesn’t know that req.user can exist on 
 the Request object, which causes it to throw the error "Property 'user' does not exist on type 'Request...'".*/
@@ -16,11 +16,11 @@ declare global {
       }
     }
   }
-
-
+  
 function authenticationToken(req: Request,res:Response,next:NextFunction){
-    const authHeader = req.header("Authorization");
-    console.log("ahayy",authHeader)
+    const authHeader = req.header("Authorization");//contains what after "Authorization" (=Beare "token")
+    console.log("\nahayy",authHeader)
+
     if(!authHeader){
         return res.status(401).json({ message: "Unauthorized: Missing token!" });
       }
@@ -28,12 +28,17 @@ function authenticationToken(req: Request,res:Response,next:NextFunction){
       if(bearer !== "Bearer" || !token){
         return res.status(401).json({message :"Unauthorized : Invalid token!"});
       }
-
+      
+      //secretKey must be called as a string 
       jwt.verify(token, secretKey, (err:any, user:any)=>{
         if(err){
-            return res.status(403).json({message :"Forbidden : Invalid token!"});
+            console.log("\nToken received:", token);
+            console.log("\nSecret key used:", secretKey);
+            console.log('\nuser data:', user);
+            return res.status(403).json({message :'Token verification failed:', err});
         }
-        req.user = user;
+        
+        req.user = user
         next();
       })
 }

@@ -2,12 +2,17 @@
 const appU =require("express")
 const corsU = require("cors")
 const UserController = require("../controller/UserC")
-const Urouter = appU.Router()
 const authMiddleware = require("../utils/authMiddleware")
+
+
+
+const Route = appU.Router()
 //we reuse cors here for double safe
-Urouter.use(corsU())
+Route.use(corsU())
 
 //When someone sends data to /login, call the loginS function.
-Urouter.get("/users", authMiddleware.authenticationToken ,UserController.getUsers)
+//Route.get("/users" ,Middleware ,Route Handler)
+//the issue was in get users  
+Route.get("/users" ,authMiddleware.authenticationToken ,UserController.getUsers)
 
-module.exports = Urouter
+module.exports = Route
