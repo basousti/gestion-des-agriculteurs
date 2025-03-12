@@ -43,4 +43,13 @@ function authenticationToken(req: Request,res:Response,next:NextFunction){
       })
 }
 
-module.exports ={authenticationToken}
+//creating a JWT refresh token API 
+function verifyToken(token:string){
+      return jwt.verify(token, secretKey);
+      //utilisée pour vérifier et décoder un JWT  afin de s'assurer qu'il est valide et non falsifié.
+}
+
+
+module.exports ={
+  verifyToken,
+  authenticationToken}

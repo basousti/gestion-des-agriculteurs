@@ -18,5 +18,6 @@ function generateToken(user: any) {
 }
 // ✅ Use ES Modules export t3aytelha bel import {generateToken} from ...
 export { generateToken };
-//this is commonJS t3aytelha bel require()
+
+//this is commonJS t3aytelha bel require() whaka const {generateToken}
 //  module.exports = {generateToken};

@@ -7,5 +7,6 @@ Lrouter.use(cors())
 
 //When someone sends data to /login, call the loginS function.
 Lrouter.post("/login", loginController.loginC)
+Lrouter.post("/refresh-token", loginController.refreshTokenC)
 
 module.exports = Lrouter
