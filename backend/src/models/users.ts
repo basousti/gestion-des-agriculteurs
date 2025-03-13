@@ -4,6 +4,7 @@ const mongoose = require ("../configuration/dbconfig")
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
+    matriculate: String,
     password:String,
     role:{ type: String, enum:["admin","employer"], default:"employer"}
 });
