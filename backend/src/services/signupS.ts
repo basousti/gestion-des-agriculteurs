@@ -7,7 +7,6 @@ interface UserData {
     matriculate: String;
     password: string;
 }
-
 async function createUser(userData:UserData) {
 
     const {name,email,matriculate,password}=userData;
@@ -19,9 +18,14 @@ async function createUser(userData:UserData) {
         matriculate: hashedMat, 
         password: hashedPassword ,
         role :"employer" });
-
-    const savedUser = await createUser.save();
-    return savedUser;
+    
+    const existingUser = await User.findOne({ email  })
+    if(!existingUser)
+        {const savedUser = await createUser.save();
+         return savedUser;}
+    else{
+        throw new Error ("User exists");
+    }
 }
 
 module.exports = {createUser};

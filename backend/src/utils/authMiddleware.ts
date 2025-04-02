@@ -19,7 +19,6 @@ declare global {
   
 function authenticationToken(req: Request,res:Response,next:NextFunction){
     const authHeader = req.header("Authorization");//contains what after "Authorization" (=Beare "token")
-    console.log("\nahayy",authHeader)
 
     if(!authHeader){
         return res.status(401).json({ message: "Unauthorized: Missing token!" });

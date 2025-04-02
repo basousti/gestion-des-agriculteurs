@@ -26,7 +26,7 @@ const Header=()=> {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-            AppName</Navbar.Brand>
+            AgroMap</Navbar.Brand>
             
           <Nav className="justify-content-end">
             {token ? (

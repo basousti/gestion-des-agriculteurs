@@ -10,7 +10,7 @@ interface User {
   email: string;
 }
 
-function DashboardA () {
+const DashboardA:React.FC = () =>{
 
   const token = localStorage.getItem("token");
   const [users, setUsers] = useState<User[]>([]); // ✅ Specify type
@@ -42,6 +42,8 @@ function DashboardA () {
       navigate("/login1");
     }
   },[token,navigate])
+
+  
   return (
     <div>
       <Header></Header>

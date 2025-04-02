@@ -4,7 +4,6 @@ const Users = require("../models/users")
 const {verifyToken} = require("../utils/authMiddleware")
 import { generateToken } from "../utils/JWTutils";
 
-
 async function loginS(name:string,password:string) {
     try {
         const existingUser = await Users.findOne({ name  })

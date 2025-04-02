@@ -9,7 +9,7 @@ interface User {
   email: string;
 }
 
-function DashboardE() {
+const DashboardE:React.FC = () => {
   
   const token = localStorage.getItem("token");
   const [users, setUsers] = useState<User[]>([]); // ✅ Specify type
