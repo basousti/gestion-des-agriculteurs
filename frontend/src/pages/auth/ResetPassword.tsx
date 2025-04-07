@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./example.css";
-
+ 
 const ResetPassword: React.FC = () => {
 
     const [newPassword, setNewPassword] = useState("");
@@ -10,7 +10,7 @@ const ResetPassword: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/api/auth/reset-password", {
+        const response = await fetch("http://localhost:5000/Verif/UpdatePw", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ newPassword }),
@@ -23,7 +23,7 @@ const ResetPassword: React.FC = () => {
         <div className="page">
             <div className="containers">
                 <div className="sign-in">
-                    <form >
+                    <form onSubmit={handleSubmit}>
                         <h2>Reset Password</h2>
                         <br/>
                         <input type="password" placeholder="New Password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />

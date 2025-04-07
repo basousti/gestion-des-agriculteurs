@@ -8,7 +8,7 @@ interface UserData {
     password: string;
 }
 async function createUser(userData:UserData) {
-
+    
     const {name,email,matriculate,password}=userData;
     const hashedPassword = await bcrypt.hash(password, 10);
     const hashedMat = await bcrypt.hash(matriculate, 10);
@@ -19,12 +19,12 @@ async function createUser(userData:UserData) {
         password: hashedPassword ,
         role :"employer" });
     
-    const existingUser = await User.findOne({ email  })
+    const existingUser = await User.findOne({ email })
     if(!existingUser)
         {const savedUser = await createUser.save();
          return savedUser;}
     else{
-        throw new Error ("User exists");
+        throw new Error ("User already exists");
     }
 }
 

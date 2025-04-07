@@ -6,9 +6,8 @@ async function createUser(req: Request, res: Response) {
         const userData = req.body;
         const user = await userService.createUser(userData);
         res.status(201).json({ user: user, message: "User created successfully" });
-    } catch (error) {
-        console.log(error);
-        res.status(400).json({ message: "Error creating user" });
+    } catch (error:any) {
+        res.status(400).json({ message: error.message });
     }
 }
 module.exports = { createUser };

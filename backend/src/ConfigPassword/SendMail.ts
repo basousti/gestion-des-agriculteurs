@@ -1,20 +1,23 @@
 import { Request, Response } from "express";
 const Code = require("./GenerateCode");
 const Nodemailer = require("nodemailer");
+import dotenv from "dotenv";
+
+dotenv.config(); // Load environment variables
 
 async function SendMail(req: Request, res: Response) {
     try {
         const { email } = req.body;
         const code = await Code.generateCode(email);
-        
+
         //you should take this password from google not your app password Go to Google App Passwords
         const transporter = Nodemailer.createTransport({
             host: "smtp.gmail.com",
             port: 465, 
             secure: true, 
             auth: {
-                user: "badisoumayma018@gmail.com",
-                pass: "beiw nlig vraj upyp",
+                user: process.env.EMAIL_USER, 
+                pass: process.env.EMAIL_PASS, 
             },
         });
         const mailOptions = {

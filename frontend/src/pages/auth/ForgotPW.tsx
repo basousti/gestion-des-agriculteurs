@@ -12,12 +12,11 @@ const ForgotPassword: React.FC = () => {
     navigate("/login1");
   };
 
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/forgot-password", { 
+      const response = await fetch("http://localhost:5000/Verif/password", { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

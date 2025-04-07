@@ -11,6 +11,7 @@ Frouter.use(Fcors())
 
 Frouter.post("/password", ForgetPw.SendMail);
 Frouter.post("/Code", verification.VerifyCode);
+
 Frouter.post("/UpdatePw", NewPassword.UpdatePassword);
 
 

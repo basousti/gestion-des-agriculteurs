@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     email: String,
     matriculate: String,
     password:String,
-    role:{ type: String, enum:["admin","employer"], default:"employer"}
+    role:{ type: String, enum:["admin","employer"], default:"employer"},
 });
 
 //I’ll create a model called user. This model will allow us to create, read, update, and delete users in the database 
